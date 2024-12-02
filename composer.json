@@ -1,0 +1,79 @@
+{
+    "name": "spala/spala",
+    "description": "A modern lightweight CMS for Laravel and Vue developers",
+    "keywords": ["spala", "cms" ,"vue", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "support": {
+        "issues": "https://github.com/kutaloweb/spala/issues",
+        "source": "https://github.com/kutaloweb/spala"
+    },
+    "authors": [
+        {
+            "name": "Alexey Kutalo",
+            "email": "kutalo84@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0.2",
+        "barryvdh/laravel-ide-helper": "^2.4",
+        "bepsvpt/secure-headers": "8.0.0",
+        "doctrine/dbal": "~2.3",
+        "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "7.6.0",
+        "intervention/image": "^2.4",
+        "jaybizzle/laravel-crawler-detect": "1.*",
+        "laravel/framework": "^9.27",
+        "laravel/tinker": "2.10.0",
+        "mews/purifier": "3.4.2",
+        "spatie/laravel-permission": "6.10.1",
+        "tymon/jwt-auth": "^1.0.0-rc.2"
+    },
+    "require-dev": {
+        "filp/whoops": "^2.0",
+        "fzaninotto/faker": "^1.4",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "7.2.0",
+        "phpunit/phpunit": "10.5.10"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": ["app/Helper/helper.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
